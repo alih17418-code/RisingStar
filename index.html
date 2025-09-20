@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rising Stars | Haider Ali - Young Frontend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: #1e293b;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            transition: width 1s ease-in-out;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #38bdf8;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #38bdf8; }
+        }
+        
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #38bdf8, 0 0 10px #38bdf8;
+            }
+            to {
+                box-shadow: 0 0 15px #38bdf8, 0 0 20px #818cf8;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-slate-900/80 backdrop-blur-md z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
+                            RS
+                        </div>
+                        <span class="ml-3 text-xl font-bold gradient-text">Rising Stars</span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" class="px-3 py-2 rounded-md text-sm font-medium text-blue-300 hover:text-white transition">Home</a>
+                        <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition">About</a>
+                        <a href="#skills" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition">Skills</a>
+                        <a href="#achievements" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition">Achievements</a>
+                        
+                        <a href="#projects" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition">Projects</a>
+                        <a href="#contact" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white transition">Contact</a>
+
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800/95">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-white">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Skills</a>
+                <a href="#achievements" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Achievements</a>
+                                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Contact</a>
+
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white">Contact</a>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Left: Hero Text -->
+            <div class="animate__animated animate__fadeInLeft">
+                <span class="inline-block bg-blue-500/10 text-blue-400 font-semibold px-4 py-1 rounded-full mb-4 text-xs md:text-sm tracking-wide shadow">
+                    Pakistan's Youngest Tech Duo
+                </span>
+                <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4">
+                    Meet <span class="gradient-text">Haider Ali</span> & <span class="gradient-text">Hasnain Ali</span>
+                </h1>
+                <div class="text-base md:text-xl text-gray-200 mb-6">
+                    <span class="font-semibold text-blue-300">Haider (15)</span> &amp; <span class="font-semibold text-purple-300">Hasnain (14)</span> — Sibling prodigies from Taxila, passionate about web development, AI, and cybersecurity.
+                </div>
+                <p class="text-gray-300 mb-8 text-base md:text-lg">
+                    Together, they're breaking barriers as the youngest developers in their region, building innovative digital solutions and inspiring the next generation of tech talent in Pakistan.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#about" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-medium hover:opacity-90 transition transform hover:-translate-y-1 flex items-center gap-2">
+                        <i class="fas fa-users"></i>
+                        About Us
+                    </a>
+                    <a href="#contact" class="px-6 py-3 border border-blue-400 rounded-lg text-blue-300 font-medium hover:bg-blue-500/10 transition transform hover:-translate-y-1 flex items-center gap-2">
+                        <i class="fas fa-envelope"></i>
+                        Contact
+                    </a>
+                </div>
+            </div>
+            <!-- Right: Hero Image -->
+            <div class="animate__animated animate__fadeInRight flex justify-center">
+                <div class="relative w-72 h-72 md:w-96 md:h-96">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur-xl opacity-30 animate-pulse"></div>
+                    <img src="18.png " 
+                         alt="Haider and Hasnain Ali" 
+                         class="relative z-10 w-full h-full rounded-full object-top object-cover border-4 border-blue-400/30 floating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-800/50 rounded-3xl my-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                <span class="gradient-text">About Us</span>
+            </h2>
+            <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+            <p class="text-xl text-gray-400 mt-6 max-w-2xl mx-auto">
+                Young innovators from Taxila, pushing the boundaries of technology and development.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <!-- Haider Ali -->
+            <div class="developer-card bg-slate-900/70 backdrop-blur-sm rounded-2xl p-8 border border-blue-500/30 hover:border-blue-400 transition-all duration-300 relative overflow-hidden animate__animated animate__fadeInLeft">
+                <div class="text-center mb-6">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-blue-400 mb-4 glow">
+                        <img src="1.jpg"
+                             class="w-full h-full object-top object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Haider Ali</h3>
+                    <p class="text-blue-300 font-semibold">1st Youngest Ethical Hacker in Pakistan (at age 13)</p>
+                    <p class="text-gray-400">Age: 15 years</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fas fa-shield-alt text-green-400 mr-2"></i>
+                            Ethical Hacking Expert
+                        </h4>
+                        <p class="text-gray-400 text-sm">Specialized in cybersecurity and penetration testing. Became Pakistan's youngest ethical hacker at age 13.</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fas fa-code text-blue-400 mr-2"></i>
+                            Frontend Development
+                        </h4>
+                        <p class="text-gray-400 text-sm">HTML, CSS, Tailwind, JavaScript, React</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fas fa-brain text-purple-400 mr-2"></i>
+                            AI/ML & Data Science
+                        </h4>
+                        <p class="text-gray-400 text-sm">Machine Learning, Python, Data Analysis</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fab fa-python text-yellow-300 mr-2"></i>
+                            Python Certificate from Microsoft
+                        </h4>
+                        <p class="text-gray-400 text-sm">Certified in Python programming by Microsoft</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fab fa-wordpress text-yellow-400 mr-2"></i>
+                            WordPress Development
+                        </h4>
+                        <p class="text-gray-400 text-sm">Custom themes and plugin development</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Hasnain Ali -->
+            <div class="developer-card bg-slate-900/70 backdrop-blur-sm rounded-2xl p-8 border border-purple-400/30 hover:border-purple-400 transition-all duration-300 relative overflow-hidden animate__animated animate__fadeInRight">
+                <div class="text-center mb-6">
+                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-purple-400 mb-4 glow">
+                        <img src="3.jpg" 
+                             alt="Hasnain Ali" 
+                             class="w-full h-full  object-top object-cover" loading="lazy">
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Hasnain Ali</h3>
+                    <p class="text-purple-300 font-semibold">1st Youngest Web Developer in Taxila</p>
+                    <p class="text-gray-400">Age: 14 years</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fas fa-brain text-blue-400 mr-2"></i>
+                            2nd Youngest Data Scientist in Pakistan
+                        </h4>
+                        <p class="text-gray-400 text-sm">Achieved data science milestones at a young age</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fas fa-code text-green-400 mr-2"></i>
+                            Full-Stack Development
+                        </h4>
+                        <p class="text-gray-400 text-sm">HTML, CSS, Tailwind, React, Python</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fab fa-react text-blue-300 mr-2"></i>
+                            React Specialist
+                        </h4>
+                        <p class="text-gray-400 text-sm">Modern React development and state management</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fab fa-python text-yellow-300 mr-2"></i>
+                            Python Certificate from Microsoft
+                        </h4>
+                        <p class="text-gray-400 text-sm">Certified in Python programming by Microsoft</p>
+                    </div>
+                    <div class="expertise-item">
+                        <h4 class="font-semibold text-white mb-2 flex items-center">
+                            <i class="fas fa-award text-yellow-400 mr-2"></i>
+                            Taxila 1st Youngest Web Developer
+                        </h4>
+                        <p class="text-gray-400 text-sm">Recognized as the youngest web developer in Taxila</p>
+                    </div>W
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+<!-- Skills Section -->
+<section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto my-12">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            <span class="gradient-text">My Skills</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Technical Skills -->
+        <div class="animate__animated animate__fadeInLeft bg-slate-800/50 p-8 rounded-2xl border border-slate-700/30">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-laptop-code text-blue-400 mr-3"></i>
+                <span>Technical Skills</span>
+            </h3>
+            
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">HTML/CSS</span>
+                        <span class="text-blue-300">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Tailwind CSS</span>
+                        <span class="text-blue-300">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">JavaScript</span>
+                        <span class="text-blue-300">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">React</span>
+                        <span class="text-blue-300">Expert</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Python</span>
+                        <span class="text-blue-300">Basic</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professional Skills -->
+        <div class="animate__animated animate__fadeInRight bg-slate-800/50 p-8 rounded-2xl border border-slate-700/30">
+            <h3 class="text-2xl font-bold mb-6 flex items-center">
+                <i class="fas fa-brain text-purple-400 mr-3"></i>
+                <span>Professional Skills</span>
+            </h3>
+            
+            <div class="space-y-6">
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Ethical Hacking</span>
+                        <span class="text-purple-300">Medium</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 60%; background: linear-gradient(90deg, #c084fc, #e879f9);"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Machine Learning</span>
+                        <span class="text-purple-300">Medium</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 60%; background: linear-gradient(90deg, #c084fc, #e879f9);"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">AI/Data Science</span>
+                        <span class="text-purple-300">Medium</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 60%; background: linear-gradient(90deg, #c084fc, #e879f9);"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">WordPress</span>
+                        <span class="text-purple-300">Best</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 100%; background: linear-gradient(90deg, #c084fc, #e879f9);"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Problem Solving</span>
+                        <span class="text-purple-300">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%; background: linear-gradient(90deg, #c084fc, #e879f9);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Achievements Section -->
+<section id="achievements" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-800/50 rounded-3xl my-12">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">
+            <span class="gradient-text">Brothers in Code</span>
+        </h2>
+        <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+        <p class="mt-4 text-slate-300 max-w-2xl mx-auto">Two young tech prodigies from Taxila making waves in Pakistan's digital landscape</p>
+    </div>
+    
+    <!-- Haider Ali Section -->
+    <div class="mb-16">
+        <div class="flex items-center justify-center mb-8 gap-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <span class="text-white font-bold">H</span>
+            </div>
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                Haider Ali
+            </h3>
+            <div class="text-sm px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full">Age 15</div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="animate__animated animate__fadeInUp bg-gradient-to-br from-blue-900/30 to-purple-900/20 p-6 rounded-xl border border-blue-800/30 card-hover glow">
+                <div class="text-blue-300 text-4xl mb-4">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-white">Pakistan's Young Tech Talent</h3>
+                <p class="text-gray-300">Recognized as one of the youngest developers in Pakistan, starting at age 13.</p>
+            </div>
+            
+            <div class="animate__animated animate__fadeInUp bg-gradient-to-br from-blue-900/30 to-purple-900/20 p-6 rounded-xl border border-blue-800/30 card-hover glow" style="animation-delay: 0.2s">
+                <div class="text-purple-300 text-4xl mb-4">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-white">STEM Champion</h3>
+                <p class="text-gray-300">2nd position in STEM 2024 (57 schools) with Python game and STEM 2025 with web game at 14.</p>
+            </div>
+            
+            <div class="animate__animated animate__fadeInUp bg-gradient-to-br from-blue-900/30 to-purple-900/20 p-6 rounded-xl border border-blue-800/30 card-hover glow" style="animation-delay: 0.4s">
+                <div class="text-blue-300 text-4xl mb-4">
+                    <i class="fab fa-microsoft"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-white">Microsoft Certified</h3>
+                <p class="text-gray-300">Official Python certification from Microsoft, earned while still in school.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hasnian Ali Section -->
+    <div>
+        <div class="flex items-center justify-center mb-8 gap-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                <span class="text-white font-bold">H</span>
+            </div>
+            <h3 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                Hasnian Ali
+            </h3>
+            <div class="text-sm px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full">Younger Brother</div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="animate__animated animate__fadeInUp bg-gradient-to-br from-purple-900/30 to-pink-900/20 p-6 rounded-xl border border-purple-800/30 card-hover glow">
+                <div class="text-purple-300 text-4xl mb-4">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-white">Pakistan's Youngest Coder</h3>
+                <p class="text-gray-300">Began programming at just 12 years old - Taxila's #1 youngest developer.</p>
+            </div>
+            
+            <div class="animate__animated animate__fadeInUp bg-gradient-to-br from-purple-900/30 to-pink-900/20 p-6 rounded-xl border border-purple-800/30 card-hover glow" style="animation-delay: 0.2s">
+                <div class="text-pink-300 text-4xl mb-4">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-white">Data Science Prodigy</h3>
+                <p class="text-gray-300">Ranked as Pakistan's 2nd youngest data scientist with advanced Python skills.</p>
+            </div>
+            
+            <div class="animate__animated animate__fadeInUp bg-gradient-to-br from-purple-900/30 to-pink-900/20 p-6 rounded-xl border border-purple-800/30 card-hover glow" style="animation-delay: 0.4s">
+                <div class="text-purple-300 text-4xl mb-4">
+                    <i class="fab fa-microsoft"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-white">Microsoft Certified</h3>
+                <p class="text-gray-300">Earned Python certification from Microsoft at record young age.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto my-12">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+      <span class="gradient-text">My Projects</span>
+    </h2>
+    <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+    <p class="mt-4 text-gray-400">Some of my best work & upcoming projects</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- Project 1: Exclusive -->
+    <a href="https://exclusive-eight-livid.vercel.app/" target="_blank"
+       class="group relative block rounded-2xl overflow-hidden shadow-lg border border-slate-700/30 bg-slate-800/50 hover:shadow-xl hover:scale-105 transition-all duration-500">
+      <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg"
+           alt="Exclusive Website"
+           class="w-full h-56 object-cover group-hover:opacity-90">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-white">Exclusive Website</h3>
+        <p class="text-gray-400 mt-2 text-sm">🛒 E-commerce platform with modern UI, product listings, and responsive design.</p>
+      </div>
+    </a>
+
+    <!-- Project 2: TamPro -->
+    <a href="https://www.tamproconsulting.com" target="_blank"
+       class="group relative block rounded-2xl overflow-hidden shadow-lg border border-slate-700/30 bg-slate-800/50 hover:shadow-xl hover:scale-105 transition-all duration-500">
+      <img src="https://images.pexels.com/photos/374559/pexels-photo-374559.jpeg"
+           alt="TamPro Consulting"
+           class="w-full h-56 object-cover group-hover:opacity-90">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-white">TamPro Consulting</h3>
+        <p class="text-gray-400 mt-2 text-sm">💼 Business consulting & corporate website with professional branding.</p>
+      </div>
+    </a>
+
+    <!-- Project 3: Nibble -->
+    <a href="https://nibble-website-xi.vercel.app/" target="_blank"
+       class="group relative block rounded-2xl overflow-hidden shadow-lg border border-slate-700/30 bg-slate-800/50 hover:shadow-xl hover:scale-105 transition-all duration-500">
+      <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg"
+           alt="Nibble Website"
+           class="w-full h-56 object-cover group-hover:opacity-90">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-white">Nibble Website</h3>
+        <p class="text-gray-400 mt-2 text-sm">🍔 Food & restaurant themed website with menu showcase and clean design.</p>
+      </div>
+    </a>
+
+    <!-- Project 4: Ace Website -->
+    <a href="https://ace-website-jyrn.vercel.app/" target="_blank"
+       class="group relative block rounded-2xl overflow-hidden shadow-lg border border-slate-700/30 bg-slate-800/50 hover:shadow-xl hover:scale-105 transition-all duration-500">
+      <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"
+           alt="Ace Website"
+           class="w-full h-56 object-cover group-hover:opacity-90">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-white">Ace Website</h3>
+        <p class="text-gray-400 mt-2 text-sm">🏀 Sports business website designed for athletic services & events.</p>
+      </div>
+    </a>
+
+    <!-- Coming Soon 1: AI Chatbot -->
+    <div class="relative block rounded-2xl overflow-hidden border border-slate-700/30 bg-slate-800/50 opacity-90">
+      <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg"
+           alt="AI Chatbot Project"
+           class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-white">AI Chatbot</h3>
+        <p class="text-gray-400 mt-2 text-sm">🤖 Smart AI-powered chatbot for businesses to automate customer support.</p>
+        <span class="inline-block mt-3 px-3 py-1 text-xs font-medium text-purple-300 border border-purple-500 rounded-full">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- Coming Soon 2: Video Calling -->
+    <div class="relative block rounded-2xl overflow-hidden border border-slate-700/30 bg-slate-800/50 opacity-90">
+      <img src="https://images.pexels.com/photos/3205567/pexels-photo-3205567.jpeg"
+           alt="Video Calling App"
+           class="w-full h-56 object-cover">
+      <div class="p-6">
+        <h3 class="text-xl font-semibold text-white">Video Calling App</h3>
+        <p class="text-gray-400 mt-2 text-sm">📹 A secure video calling platform, similar to Google Meet, for real-time meetings.</p>
+        <span class="inline-block mt-3 px-3 py-1 text-xs font-medium text-purple-300 border border-purple-500 rounded-full">Coming Soon</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/923100870187" target="_blank" 
+   class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-all duration-300 z-50 flex items-center justify-center">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="currentColor" class="w-7 h-7">
+    <path d="M16 .5C7.44.5.5 7.44.5 16c0 2.8.73 5.53 2.13 7.92L.5 31.5l7.76-2.1C10.64 30.77 13.28 31.5 16 31.5c8.56 0 15.5-6.94 15.5-15.5S24.56.5 16 .5Zm0 27.75c-2.5 0-4.95-.66-7.1-1.91l-.51-.3-4.61 1.25 1.23-4.5-.33-.53A12.75 12.75 0 0 1 3.25 16c0-7 5.74-12.75 12.75-12.75S28.75 9 28.75 16 23 28.25 16 28.25Zm7.23-9.26c-.4-.2-2.36-1.17-2.73-1.3-.37-.14-.64-.2-.9.2-.27.4-1.04 1.3-1.28 1.56-.24.27-.47.3-.87.1s-1.7-.63-3.24-2c-1.2-1.07-2-2.4-2.23-2.8-.24-.4-.03-.62.18-.81.18-.17.4-.44.6-.66.2-.23.27-.37.4-.63.13-.27.07-.5-.03-.7-.1-.2-.9-2.15-1.24-2.95-.33-.8-.67-.7-.9-.7h-.77c-.27 0-.7.1-1.07.5-.37.4-1.4 1.37-1.4 3.34s1.44 3.87 1.64 4.14c.2.27 2.82 4.3 6.84 6 4.03 1.7 4.03 1.13 4.77 1.06.73-.07 2.36-.96 2.7-1.9.34-.93.34-1.73.24-1.9-.1-.17-.37-.27-.77-.47Z"/>
+  </svg>
+</a>
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto my-12">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+      <span class="gradient-text">Get In Touch</span>
+    </h2>
+    <div class="w-20 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto"></div>
+    <p class="text-gray-300 mt-4 max-w-2xl mx-auto">
+      Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <!-- Contact Form -->
+    <div class="animate__animated animate__fadeInLeft">
+      <form id="contact-form" action="https://formspree.io/f/xvgbelqb" method="POST" class="space-y-6">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
+          <input type="text" id="name" name="name" required
+            class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/30 rounded-lg text-white placeholder-gray-400 transition">
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Your Email</label>
+          <input type="email" id="email" name="email" required
+            class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/30 rounded-lg text-white placeholder-gray-400 transition">
+        </div>
+
+        <div>
+          <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject</label>
+          <input type="text" id="subject" name="subject" required
+            class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/30 rounded-lg text-white placeholder-gray-400 transition">
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message</label>
+          <textarea id="message" name="message" rows="5" required
+            class="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/30 rounded-lg text-white placeholder-gray-400 transition"></textarea>
+        </div>
+
+        <button type="submit"
+          class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-medium hover:opacity-90 transition transform hover:-translate-y-1">
+          Send Message
+        </button>
+      </form>
+
+      <!-- Success/Error Message -->
+      <div id="form-message" class="mt-4 text-center text-sm"></div>
+    </div>
+
+    
+    <!-- Contact Info (Right Side) -->
+    <div class="animate__animated animate__fadeInRight">
+      <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700/30 h-full">
+        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+
+        <div class="space-y-6">
+          <div class="flex items-start">
+            <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mr-4 mt-1">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-1">Location</h4>
+              <p class="text-gray-300">Taxila, Punjab, Pakistan</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 mr-4 mt-1">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-1">Email</h4>
+              <p class="text-gray-300">alihaider1no2@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-start">
+            <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 mr-4 mt-1">
+              <i class="fas fa-phone-alt"></i>
+            </div>
+            <div>
+              <h4 class="font-bold mb-1">Phone</h4>
+              <p class="text-gray-300">+923100870187</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <h4 class="text-lg font-bold mb-4">Follow Me</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center text-blue-400 hover:bg-blue-500/20 transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center text-purple-400 hover:bg-purple-500/20 transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center text-purple-400 hover:bg-purple-500/20 transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-slate-700/30 p-4 rounded-lg border border-slate-600/30">
+          <h4 class="text-lg font-bold mb-2">Availability</h4>
+          <p class="text-gray-300 mb-2">I'm available for freelance work and collaborations.</p>
+          <div class="flex items-center">
+            <div class="w-3 h-3 rounded-full bg-green-400 mr-2 animate-pulse"></div>
+            <span class="text-sm text-gray-300">Currently available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Success/Error Message -->
+<div id="form-message" class="mt-4 text-center text-sm"></div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900/80 py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-xl">
+                        RS
+                    </div>
+                    <span class="ml-3 text-xl font-bold gradient-text">Rising Stars</span>
+                </div>
+                
+                <div class="text-gray-400 text-sm text-center md:text-right">
+                    <p>&copy; 2025 Rising Stars. All rights reserved.</p>
+                    <p class="mt-1">Haider Ali & Hasnain Ali - The talented sibling duo from Taxila</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate__animated');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    const animation = element.getAttribute('data-animation');
+                    element.classList.add(animation);
+                }
+            });
+        };
+        
+        // Initialize animations on load
+        window.addEventListener('load', animateOnScroll);
+
+        window.console.log("Welcome to Rising Stars Portfolio!");
+        console.log()
+        
+        // Animate on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Initialize skill bars animation
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            // Store original width
+            const width = bar.style.width;
+         
+            bar.style.width = '0';
+            
+           
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+
+
+
+    </script>
+
+<!-- JS for Form -->
+<script>
+  const form = document.getElementById('contact-form');
+  const formMessage = document.getElementById('form-message');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    formMessage.textContent = "Sending...";
+    formMessage.className = "mt-4 text-center text-sm text-blue-400";
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        formMessage.textContent = "✅ Message sent successfully!";
+        formMessage.className = "mt-4 text-center text-sm text-green-400";
+        form.reset();
+      } else {
+        formMessage.textContent = "❌ Something went wrong. Please try again.";
+        formMessage.className = "mt-4 text-center text-sm text-red-400";
+      }
+    } catch (error) {
+      formMessage.textContent = "❌ Network error. Please try again.";
+      formMessage.className = "mt-4 text-center text-sm text-red-400";
+    }
+const form = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+  });
+
+  
+  
+</script>
+
+<!-- JS for Form -->
+<script>
+
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    formMessage.textContent = "Sending...";
+    formMessage.className = "mt-4 text-center text-sm text-blue-400";
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        formMessage.textContent = "✅ Message sent successfully!";
+        formMessage.className = "mt-4 text-center text-sm text-green-400";
+        form.reset();
+      } else {
+        formMessage.textContent = "❌ Something went wrong. Please try again.";
+        formMessage.className = "mt-4 text-center text-sm text-red-400";
+      }
+    } catch (error) {
+      formMessage.textContent = "❌ Network error. Please try again.";
+      formMessage.className = "mt-4 text-center text-sm text-red-400";
+    }
+  });
+</script>
+
+
+</body>
+</html>
